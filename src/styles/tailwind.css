@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .my-btn {
+    @apply p-0 px-2 h-6 mr-2 leading-6 border rounded text-xs hover:bg-gray-500 transition-colors duration-300 hover:text-white dark:border-zinc-700 active:bg-gray-600;
+  }
+
+  .primary {
+    @apply text-[var(--text-hover)] border-[var(--text-hover)] hover:bg-[var(--text-hover)];
+  }
+
+  .warning {
+    @apply text-[var(--warning)] border-[var(--warning)] hover:bg-[var(--warning)];
+  }
+}
