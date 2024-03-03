@@ -1,22 +1,25 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-// 处理 alias
-import { resolve } from 'path'
-// vite 插件
+import { fileURLToPath, URL } from 'node:url'
 import { compression } from 'vite-plugin-compression2'
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
-// import vitePluginImportus from 'vite-plugin-importus'
 import prefetchPlugin from 'vite-plugin-bundle-prefetch'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      '@': pathResolve('src'),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   server: {
-    port: 9001
+    port: 9001,
+    proxy: {
+      // 遇到这个地址的请求 会代理到 target 填入的地址中
+      '/api': {
+        target: 'http://127.0.0.1:3000',
+      },
+    },
   },
   plugins: [
     vue(),
@@ -35,14 +38,10 @@ export default defineConfig({
         'vue-vendor': [/vue/],
         'tailwind-vendor': [/tailwindcss/],
         // 源码中目录的代码都会打包进 [name] 这个 chunk 中
-        assets: [/src\/assets/],
+        styles: [/src\/styles/],
         locales: [/src\/locales/],
       },
     }),
     prefetchPlugin(),
   ],
 })
-
-function pathResolve(dir: string) {
-  return resolve(process.cwd(), '.', dir)
-}

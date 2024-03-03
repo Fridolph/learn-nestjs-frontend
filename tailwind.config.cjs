@@ -8,11 +8,11 @@ export default {
       padding: '1rem',
     },
     screens: {
-      sm: '640px',
-      md: '1024px',
-      lg: '1376px',
-      xl: '1920px',
-      xxl: '2560px',
+      sm: '576px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1400px',
+      xxl: '1920px',
     },
     extend: {
       animation: {

@@ -1,7 +1,7 @@
 @import './var.css';
 @import './reset.css';
-/* @import '../assets/iconfont/iconfont.css'; */
 @import './tailwind.css';
+@import './iconfont.css';
 
 #app {
   min-height: 100vh;

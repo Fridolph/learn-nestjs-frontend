@@ -1,16 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 覆盖原有的标签样式 */
 @layer components {
-  .my-btn {
-    @apply p-0 px-2 h-6 mr-2 leading-6 border rounded text-xs hover:bg-gray-500 transition-colors duration-300 hover:text-white dark:border-zinc-700 active:bg-gray-600;
+  input {
+    @apply h-10 ring-1 ring-gray-200 px-3 outline-1 rounded focus:outline-[1px] focus:outline-slate-200;
   }
+}
 
-  .primary {
+/* 添加自定义样式 */
+@layer components {  
+  /* .primary {
     @apply text-[var(--text-hover)] border-[var(--text-hover)] hover:bg-[var(--text-hover)];
-  }
+  } */
 
-  .warning {
-    @apply text-[var(--warning)] border-[var(--warning)] hover:bg-[var(--warning)];
+  .invalid {
+    @apply ring-1 ring-rose-700 focus:outline-none !important;
   }
 }

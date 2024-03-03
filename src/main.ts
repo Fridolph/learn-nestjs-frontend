@@ -1,11 +1,10 @@
 import { createApp } from 'vue'
-import './styles/index.css'
 import App from './App.vue'
-
 import { setupStore } from './store'
 import { setupRouter } from './router'
-
-bootstrap()
+// 样式相关
+import 'tailwindcss/tailwind.css'
+import './styles/index.css'
 
 function bootstrap() {
   const app = createApp(App)
@@ -19,3 +18,5 @@ function bootstrap() {
   // mount
   app.mount('#app')
 }
+
+bootstrap()
