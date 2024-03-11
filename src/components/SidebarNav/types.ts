@@ -3,14 +3,15 @@ export interface SidebarLogoProps {
 }
 
 export interface MenuListItemProps {
-  name: string;
-  icon?: string;
-  path?: string;
-  pathName?: string;
-  children?: MenuListItemProps[];
+  name: string
+  icon?: string
+  path?: string
+  pathName?: string
+  meta?: object
+  children?: MenuListItemProps[]
 }
 
 export interface SidebarProps {
-  logo: string;
+  logo: string
   menuList: MenuListItemProps[]
 }

@@ -7,11 +7,11 @@ let routes = [
   {
     path: '/',
     component: () => import('@/layouts/default.vue'),
-    name: 'Index',
+    name: '主页',
     redirect: '/index',
     children: [
       {
-        name: 'homeindex',
+        name: '概览',
         path: 'index',
         component: () => import('@/views/Home/index.vue'),
         meta: {
@@ -19,7 +19,7 @@ let routes = [
         },
       },
       {
-        name: 'users',
+        name: '用户管理',
         path: 'users',
         component: () => import('@/views/Users/index.vue'),
         meta: {
@@ -27,7 +27,7 @@ let routes = [
         },
       },
       {
-        name: 'menus',
+        name: '菜单管理',
         path: 'menus',
         component: () => import('@/views/Menus/index.vue'),
         meta: {
@@ -35,7 +35,7 @@ let routes = [
         },
       },
       {
-        name: 'roles',
+        name: '角色管理',
         path: 'roles',
         component: () => import('@/views/Roles/index.vue'),
         meta: {
@@ -46,12 +46,12 @@ let routes = [
   },
   {
     path: '/login',
-    name: 'Login',
+    name: '登录',
     component: () => import('@/views/Login/index.vue'),
   },
   {
     path: '/register',
-    name: 'Register',
+    name: '注册',
     component: () => import('@/views/Login/register.vue'),
   },  
 ] as RouteRecordRaw[]

@@ -13,9 +13,12 @@
         <div>Fridolph</div>
       </header>
       <nav class="bg-slate-100 h-10 px-3 leading-10">
-        <!-- <router-link to="/">Home</router-link>  -->
-        |
-        <!-- <router-link to="/about">About</router-link> -->
+        <template
+          v-for="item in breadCrumbs"
+          :key="item.name">
+          <router-link :to="item.path">{{ item.name }}</router-link>
+          <span class="last:invisible"> | </span>
+        </template>
       </nav>
       <main class="overflow-hidden bg-white p-5 h-[calc(100vh-104px)] overflow-y-auto">
         <router-view></router-view>
@@ -25,15 +28,33 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, watch } from 'vue'
+import { toRefs, computed } from 'vue'
 import { useMenuStore } from '../store/menu'
 import SidebarNav from '../components/SidebarNav/index.vue'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
+// console.log("🚀 ~ route:", route)
 const { logo, list } = toRefs(useMenuStore())
 const { getMenuList } = useMenuStore()
-
 getMenuList()
 
+const breadCrumbs = computed(() => {
+  const { matched } = route
+  return matched.map(v => ({
+    path: v.redirect || v.path,
+    name: v.name,
+  }))
+})
+
+setTimeout(() => {
+  console.log('🚀 ~ breadCrumbs:', breadCrumbs)
+}, 1000)
+// watch(list, (newVal) => {
+//   console.log("🚀 ~ watch ~ newVal:", newVal)
+//   let item = newVal.find(v => v.pathmatched === name)
+//   console.log("🚀 ~ watch -> list:", item)
+// })
 // watch(list, (newVal, oldVal) => {
 //   console.log("🚀 ~ watch ~ newVal:", newVal, oldVal)
 // })

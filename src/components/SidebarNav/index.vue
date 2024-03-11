@@ -5,7 +5,7 @@
       <router-link
         v-for="item in menuList"
         :key="item.name"
-        :to="{ name: item.pathName }"
+        :to="{ name: item.name }"
         class="block hover:bg-slate-700"
         >
         <Iconfont v-if="item.icon" :name="item.icon" />
