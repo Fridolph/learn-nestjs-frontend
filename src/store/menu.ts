@@ -1,5 +1,6 @@
 import { MenuListItemProps } from '@/components/SidebarNav/types'
 import { defineStore } from 'pinia'
+import { nextTick } from 'vue'
 
 export const useMenuStore = defineStore('menu', {
   state: () => ({
@@ -10,7 +11,7 @@ export const useMenuStore = defineStore('menu', {
   actions: {
     async getMenuList() {
       // 这里可以根据用户权限动态生成菜单列表
-      setTimeout(() => {        
+      nextTick(() => {
         this.list = [
           {
             name: '主页',
@@ -45,8 +46,8 @@ export const useMenuStore = defineStore('menu', {
             }
           },
         ]
-        console.log("🚀 ~ setTimeout ~ list:", this.list)
-      }, 200)
+        console.log("🚀 ~ nextTick ~ list:", this.list)
+      })
       
       return this.list
     }

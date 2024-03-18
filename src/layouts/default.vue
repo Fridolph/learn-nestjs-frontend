@@ -9,15 +9,17 @@
     <!-- 右侧主体内容 -->
     <section class="w-[calc(100vw-280px)]">
       <header class="flex justify-between px-3 h-16">
-        <span>左侧</span>
-        <div>Fridolph</div>
+        <div class="leading-[64px]">左侧</div>
+        <div class="h-10 flex mt-3 overflow-hidden border-2 rounded-full">
+          <img class="w-full" src="/img/avatar.jpg" />
+        </div>
       </header>
       <nav class="bg-slate-100 h-10 px-3 leading-10">
         <template
           v-for="item in breadCrumbs"
           :key="item.name">
           <router-link :to="item.path">{{ item.name }}</router-link>
-          <span class="last:invisible"> | </span>
+          <span class="last:invisible"> &gt; </span>
         </template>
       </nav>
       <main class="overflow-hidden bg-white p-5 h-[calc(100vh-104px)] overflow-y-auto">
@@ -47,9 +49,6 @@ const breadCrumbs = computed(() => {
   }))
 })
 
-setTimeout(() => {
-  console.log('🚀 ~ breadCrumbs:', breadCrumbs)
-}, 1000)
 // watch(list, (newVal) => {
 //   console.log("🚀 ~ watch ~ newVal:", newVal)
 //   let item = newVal.find(v => v.pathmatched === name)
