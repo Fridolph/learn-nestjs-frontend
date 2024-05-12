@@ -26,7 +26,7 @@ import { useMenuStore } from '@/store/menu'
 import SidebarNav from '@/layouts/components/SidebarNav/index.vue'
 
 defineOptions({
-  name: 'BasicLayout',
+  name: 'DefaultLayout',
 })
 
 // console.log("🚀 ~ route:", route)

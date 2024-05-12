@@ -40,7 +40,7 @@ let routes = [
         component: () => import('@/views/Roles/index.vue'),
         meta: {
           icon: 'fas fa-tools',
-        },
+        }
       },
     ],
   },
@@ -53,7 +53,7 @@ let routes = [
     path: '/register',
     name: '注册',
     component: () => import('@/views/Login/register.vue'),
-  },  
+  },
 ] as RouteRecordRaw[]
 
 const router = createRouter({

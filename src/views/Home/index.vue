@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import Child from './child.vue'
+import Child from './Child.vue'
 // import type { ComponentInternalInstance } from 'vue'
 // import { getCurrentInstance, ref } from 'vue'
 
