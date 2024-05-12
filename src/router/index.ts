@@ -6,7 +6,7 @@ let routes = [
   // 其他内容页
   {
     path: '/',
-    component: () => import('@/layouts/default.vue'),
+    component: () => import('@/layouts/DefaultLayout/index.vue'),
     name: '主页',
     redirect: '/index',
     children: [
