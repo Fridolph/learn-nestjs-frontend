@@ -1,5 +1,5 @@
 <template>
-  <h2>Home Page</h2>
+  <h2 class="mb-5">Home Page</h2>
 
   <!-- <button
     class="p-2 bg-blue-400 text-white rounded-md"

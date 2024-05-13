@@ -18,21 +18,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import ComplianceEntry from './complianceEntry.vue'
-
+import useHeader from './useCommonHeader'
 defineOptions({ name: 'ComplianceEntry' })
-
-const toggle = ref(false)
-
+const { toggle, handleToggle } = useHeader()
 const avatarRef = ref<HTMLDivElement>()
 const complianceRef = ref<InstanceType<typeof ComplianceEntry>>()
 
-function toggleAvatar() {
-  toggle.value = !toggle.value
-}
-
 defineExpose({
-  toggleAvatar,
-  avatarRef,
+  handleToggle,
   complianceRef,
 })
 </script>

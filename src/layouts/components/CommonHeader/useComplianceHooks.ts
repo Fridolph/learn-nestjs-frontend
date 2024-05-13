@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 export interface IComplianceInfo {
   firstEnable: 1 | 0
@@ -9,6 +9,7 @@ export interface IComplianceInfo {
 }
 
 export default function useComplianceHooks() {
+  const loading = ref<boolean>(false)
   const complianceInfo = ref<IComplianceInfo>({
     firstEnable: 0, // 1首次开启, 0非首次开启
     enableStatus: 0, // 1启用, 0未启用
@@ -18,14 +19,22 @@ export default function useComplianceHooks() {
   })
 
   async function queryCompliance() {
+    loading.value = true
     const res = await mockData()
     console.log(`queryCompliance -->`, res)
 
     localStorage.setItem('SAAS_COMPLIANCE_INFO', JSON.stringify(res.data))
     complianceInfo.value = res.data
+    loading.value = false
   }
 
+  onMounted(() => {
+    console.log('页面加载 -> 初始化请求合规数据')
+    queryCompliance()
+  })
+
   return {
+    loading,
     queryCompliance,
     complianceInfo,
   }

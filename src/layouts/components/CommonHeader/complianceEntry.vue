@@ -7,49 +7,48 @@
       height="22"
       class="compliance-icon"
       src="./icon.svg" />
-
-    <span>
-      {{ complianceInfo.name }}
-      {{ complianceInfo.version }}
-    </span>
-    <div
-      v-if="complianceInfo.enableStatus == 1 && complianceInfo.firstEnable == 1"
-      class="tag-wrap">
-      NEW
-    </div>
-    <div
-      v-if="
-        complianceInfo.enableStatus == 1 &&
-        complianceInfo.firstEnable == 0 &&
-        complianceInfo.resultScore > 0
-      "
-      class="tag-wrap">
-      {{ complianceInfo.resultScore }}
-    </div>
+    <template v-if="loading">
+      <span>loading ...</span>
+    </template>
+    <template v-else>
+      <span>
+        {{ complianceInfo.name }}
+        {{ complianceInfo.version }}
+      </span>
+      <div
+        v-if="complianceInfo.enableStatus == 1 && complianceInfo.firstEnable == 1"
+        class="tag-wrap">
+        NEW
+      </div>
+      <div
+        v-if="
+          complianceInfo.enableStatus == 1 &&
+          complianceInfo.firstEnable == 0 &&
+          complianceInfo.resultScore > 0
+        "
+        class="tag-wrap">
+        {{ complianceInfo.resultScore }}
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import useComplianceHooks from './useComplianceHooks'
 
-const { queryCompliance, complianceInfo } = useComplianceHooks()
+const { loading, queryCompliance, complianceInfo } = useComplianceHooks()
 
 function handleClick() {
   console.log(`点击合规中心 -> 查看当前数据`, complianceInfo.value)
   if (complianceInfo.value.enableStatus == 1) {
-    alert('已配，该跳合规中心页')
+    alert(`已配，该跳合规中心页\n${JSON.stringify(complianceInfo.value)}`)
   } else {
-    alert('未配，应跳转介绍页')
+    alert(`未配，应跳转介绍页\n${JSON.stringify(complianceInfo.value)}`)
   }
 }
 
-function refresh() {
-  queryCompliance()
-  // alert('刷新了数据')
-}
-
 defineExpose({
-  refresh,
+  queryCompliance,
 })
 </script>
 
